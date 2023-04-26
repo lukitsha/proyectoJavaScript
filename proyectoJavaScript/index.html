@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="./css/style.css" rel="stylesheet" type="text/css">
+    <title>Primera PreEntrega</title>
+</head>
+<body>
+    <div>
+        <h1>LEKETS ELECTRONICS</h1>
+        <h3>Electronic Wharehouse</h3>
+        <h3>PARA UTILIZAR LA CALCULADORA DE INTERESES, INGRESE LOS DATOS SOLICITDOS.</h3>
+        <h4>UN VEZ RELIZADO ESTO, EL TOTAL QUE DEBERA ABONAR MENSUALMENTE APARECERA AUTOMÁTICAMENTE</h4>
+    </div>
+    <div class="cuadroCalculadora"> 
+        <h2>Calculador Interes</h2>
+        <div class="input">
+            <p>Cantidad del prestamo: U$D</p>
+                <input id="amount" type="number" min="1" max="5000000" onchange="computeLoan()">
+            <p>Tasa de Interes: %</p>
+                <input id="interest_rate" min="0" max="100" value="10" step=".1" onchange="computeLoan()">
+            <p>Meses de Duración: </p>
+                <input id="months" type="number" min="1" max="300" value="1" step="1" onchange="computeLoan()">
+            <h3 id="payment"></h2> 
+        </div>
+    </div>
+    
+    <script src="./js/main.js"></script>
+</body>
+</html>
