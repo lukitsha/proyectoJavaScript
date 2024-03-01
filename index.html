@@ -4,12 +4,279 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Primera PreEntrega</title>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <link rel="shortcut icon" href="img/icon.png">
+    <link href="./css/style.css" rel="stylesheet" type="text/css">
+    <title>Entregable FINAL JS</title>
 </head>
 <body>
-    <h1>LEKETS ELECTRONICS</h1>
-    <h3>Electronic Wharehouse</h3>
+    
+    <div class="topnav">
+        <a class="active" href="#calculadora">CALCULADORA DE INTERÉS</a>
+        <a href="#conversorDivisas">CONVERSOR DE DIVISAS (LOCAL DATA)</a>
+        <a href="#conversorDivisasAPI">CONVERSOR DE DIVISAS (API)</a>
+        <div id="botonera" class="btn-group contenedor">
+            <button id="color-light" class="btn-light">Light Mode</button>
+            <button id="color-dark" class="btn-dark">Dark Mode</button>
+            <button id="color-change" class="btn-change">Cambiar Modo Actual</button>
+        </div>
+    </div>
+    
+    <div >
+        <img class="banner" src="img/probarBaner2.jpg" alt="banner">
+    </div>
+    <br>
+    <div id="calculadora">
+        <h2>CALCULADORA DE INTERÉS</h2>
+        <br>
+        <h3>PARA UTILIZAR EL CALCULADOR DE INTERESES, INGRESE LOS DATOS SOLICITDOS.</h3>
+        <br>
+        <h4>UN VEZ RELIZADO ESTO, EL TOTAL QUE DEBERA ABONAR MENSUALMENTE APARECERA AUTOMÁTICAMENTE</h4>
+    </div>
+    <br>
+    <div id="calculadoraIntereses" class="cuadroCalculadora"> 
+        <h2>Calculador Interes</h2>
+        <div class="input">
+            <p>Cantidad del prestamo: U$D</p>
+                <input id="amount" type="number" min="1" max="5000000" onchange="computeLoan()">
+            <p>Tasa de Interes: %</p>
+                <input id="interest_rate" min="0" max="100" value="10" step=".1" onchange="computeLoan()">
+            <p>Meses de Duración: </p>
+                <input id="months" type="number" min="1" max="300" value="1" step="1" onchange="computeLoan()">
+            <h3 id="payment"></h3> 
+            
+        </div>
+    </div>
+    <br>
+    <div class="btn-group contenedor2">
+        <a href="#botonera" id="arriba1" class="btn-conversor">VOLVER ARRIBA</a>
+    </div>
+   
+    <div >
+        <img class="banner" src="img/convrsoImg.jpg" alt="banner">
+    </div>
+    <div id="conversorDivisas" class="conversorDivisas">
+        <h2>CONVERSOR DE DIVISAS (LOCAL DATA)</h2>
+        <br>
+        <div id="cambioColor1" class="divisa">
+            <div class="nombre">Pesos Argentinos</div>
+            <input id="ARS" class="valor" type="number" value="1" data-cambio="911.98" step="0.25" onChange="valorModificado(this)"/>
+        </div>
+        <br>
+        <div id="cambioColor2" class="divisa">
+            <div class="nombre">Euros</div>
+            
+            <input class="valor" type="number" value="1" data-cambio="1" step="0.25" onChange="valorModificado(this)"/>
+        </div> 
+        <br>
+        <div id="cambioColor3" class="divisa">
+            <div class="nombre">Dólares</div>
+            <input id="USD" class="valor" type="number" value="1" data-cambio="1.125" step="0.25" onChange="valorModificado(this)"/>
+        </div>
+        <br>
+        <div id="cambioColor4" class="divisa">
+            <div class="nombre">Libras</div>
+            <input id="GBP" class="valor" type="number" value="1"  data-cambio="0.8647" step="0.25" onChange="valorModificado(this)"/>
+        </div>
+        <br>
+        <div id="cambioColor5" class="divisa">
+            <div class="nombre">Yenes</div>
+            <input id="JPY" class="valor" type="number" value="1" data-cambio="125.86" onChange="valorModificado(this)"/> 
+        </div>
+        <br>
+    </div>
+    <br>
+    <div class="btn-group contenedor2">
+        <a href="#botonera" id="arriba2" class="btn-conversor">VOLVER ARRIBA</a>
+    </div>
+    
+    <br>
+   
+    <div >
+        <img class="banner" src="img/conversorApiImg.jpg" alt="banner">
+    </div>
+    <div id="conversorDivisasAPI" class="conversorDivisasAPI">
+        <div>
+            <h2>CONVERSOR DE DIVISAS (API)</h2>
+            <br>
+            <div>
+                <h3>PARA UTILIZAR EL CONVERSOR, SELECCIONE PRIEMRO LAS 2 MONEDAS A COMPARAR HACIENDO CLICK EN LOS RECUADROS</h3>
+                <h4>(PUEDE SELECCIONAR ENTRE UNA GRAN VARIEDAD DE MONEDAS - LOS RATES DE CONVERSION SE MUESTRAN ABAJO EN TIEMPO REAL)</h4>
+                <br>
+            </div>
+            <br>
+            <h4>LUEGO, INGRESE EL MONTO DE ALGUNA DE LAS 2 MONEDAS Y EL RESULTADO APARECERA AUTOMATICAMENTE</h4>
+            <h5>PUEDE UTLIZIZAR EL BOTON DE CAMBIAR PARA INVERTIR EL ORDEND DE CONVERSION</h5>
+        </div>
+        
+        
+        <div class="container conversorDivisasAPIStyle">
+            
+            <div class="moneda">
+                <select id="moneda-uno">
+                    <option value="AED">AED</option>
+                    <option value="ARS">ARS</option>
+                    <option value="AUD">AUD</option>
+                    <option value="BGN">BGN</option>
+                    <option value="BRL">BRL</option>
+                    <option value="BSD">BSD</option>
+                    <option value="CAD">CAD</option>
+                    <option value="CHF">CHF</option>
+                    <option value="CLP">CLP</option>
+                    <option value="CNY">CNY</option>
+                    <option value="COP">COP</option>
+                    <option value="CZK">CZK</option>
+                    <option value="DKK">DKK</option>
+                    <option value="DOP">DOP</option>
+                    <option value="EGP">EGP</option>
+                    <option value="EUR">EUR</option>
+                    <option value="FJD">FJD</option>
+                    <option value="GBP">GBP</option>
+                    <option value="GTQ">GTQ</option>
+                    <option value="HKD">HKD</option>
+                    <option value="HRK">HRK</option>
+                    <option value="HUF">HUF</option>
+                    <option value="IDR">IDR</option>
+                    <option value="ILS">ILS</option>
+                    <option value="INR">INR</option>
+                    <option value="ISK">ISK</option>
+                    <option value="JPY">JPY</option>
+                    <option value="KRW">KRW</option>
+                    <option value="KZT">KZT</option>
+                    <option value="MXN">MXN</option>
+                    <option value="MYR">MYR</option>
+                    <option value="NOK">NOK</option>
+                    <option value="NZD">NZD</option>
+                    <option value="PAB">PAB</option>
+                    <option value="PEN">PEN</option>
+                    <option value="PHP">PHP</option>
+                    <option value="PKR">PKR</option>
+                    <option value="PLN">PLN</option>
+                    <option value="PYG">PYG</option>
+                    <option value="RON">RON</option>
+                    <option value="RUB">RUB</option>
+                    <option value="SAR">SAR</option>
+                    <option value="SEK">SEK</option>
+                    <option value="SGD">SGD</option>
+                    <option value="THB">THB</option>
+                    <option value="TRY">TRY</option>
+                    <option value="TWD">TWD</option>
+                    <option value="UAH">UAH</option>
+                    <option value="USD" selected>USD</option>
+                    <option value="UYU">UYU</option>
+                    <option value="VND">VND</option>
+                    <option value="ZAR">ZAR</option>
+    
+                </select>
+    
+                <input 
+                type="number" 
+                id="cantidad-uno" 
+                placeholder="0"  
+                value="1"
+                >
+    
+            </div>
+    
+            <div class="taza-cambio-container">
+                <button class="btn" id="taza">
+                    CAMBIAR
+                </button>
+    
+                <div class="cambio" id="cambio"></div>
+    
+            </div>
+    
+            <div class="moneda">
+                <select id="moneda-dos">
+                    <option value="AED">AED</option>
+                    <option value="ARS" selected>ARS</option>
+                    <option value="AUD">AUD</option>
+                    <option value="BGN">BGN</option>
+                    <option value="BRL">BRL</option>
+                    <option value="BSD">BSD</option>
+                    <option value="CAD">CAD</option>
+                    <option value="CHF">CHF</option>
+                    <option value="CLP">CLP</option>
+                    <option value="CNY">CNY</option>
+                    <option value="COP">COP</option>
+                    <option value="CZK">CZK</option>
+                    <option value="DKK">DKK</option>
+                    <option value="DOP">DOP</option>
+                    <option value="EGP">EGP</option>
+                    <option value="EUR">EUR</option>
+                    <option value="FJD">FJD</option>
+                    <option value="GBP">GBP</option>
+                    <option value="GTQ">GTQ</option>
+                    <option value="HKD">HKD</option>
+                    <option value="HRK">HRK</option>
+                    <option value="HUF">HUF</option>
+                    <option value="IDR">IDR</option>
+                    <option value="ILS">ILS</option>
+                    <option value="INR">INR</option>
+                    <option value="ISK">ISK</option>
+                    <option value="JPY">JPY</option>
+                    <option value="KRW">KRW</option>
+                    <option value="KZT">KZT</option>
+                    <option value="MXN">MXN</option>
+                    <option value="MYR">MYR</option>
+                    <option value="NOK">NOK</option>
+                    <option value="NZD">NZD</option>
+                    <option value="PAB">PAB</option>
+                    <option value="PEN">PEN</option>
+                    <option value="PHP">PHP</option>
+                    <option value="PKR">PKR</option>
+                    <option value="PLN">PLN</option>
+                    <option value="PYG">PYG</option>
+                    <option value="RON">RON</option>
+                    <option value="RUB">RUB</option>
+                    <option value="SAR">SAR</option>
+                    <option value="SEK">SEK</option>
+                    <option value="SGD">SGD</option>
+                    <option value="THB">THB</option>
+                    <option value="TRY">TRY</option>
+                    <option value="TWD">TWD</option>
+                    <option value="UAH">UAH</option>
+                    <option value="USD">USD</option>
+                    <option value="UYU">UYU</option>
+                    <option value="VND">VND</option>
+                    <option value="ZAR">ZAR</option>
+    
+                </select>
+    
+                <input 
+                type="number" 
+                id="cantidad-dos" 
+                placeholder="0"  
+                >
+    
+            </div>
+        </div>
+    
 
+    </div>
+    
+    <div>
+        <p>----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</p>
+    </div>
+    <div class="container3">
+        <div class="avatar">
+            <a href="https://plataforma-beta.coderhouse.com/cursos/61000/javascript">
+                <img src="img/floatingMe.png" alt="luca" />
+            </a>
+        </div>
+        <div class="content">
+            <h1>TRABAJO FINAL JAVASCRIPT</h1>
+            <h4>CODERHOUSE #61000</h4>
+            <p>LUCA GAIDO</p>
+        </div>
+    </div>
+    <div class="btn-group contenedor2">
+        <a href="#botonera" id="arriba2" class="btn-conversor">VOLVER ARRIBA</a>
+    </div>
+    
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="./js/main.js"></script>
 </body>
 </html>
